@@ -1,0 +1,33 @@
+# Query chash-
+    1. react-query mantain chash of fetch data. when make new request, 
+    2. react-query first fetch data from chash. then refetch data from api.
+    3. if data has changed reflect it on page.
+    4. it save and identify chash with queryKey.
+    5. user don't see the loading of data fetching. inhance user experience.
+
+# Stale Time -
+    1. staleTime use to fetch data after some interval. [staleTime:MS]
+
+# Polling -
+    1. refetchInterval- use to fetch data aftersome interval like trading app.
+    2. refetchIntervalInBackground[boolean] - use to fetch data even the tab is in the background.
+
+# useQuery on click - 
+    1. enabled[boolean] - use to prevent data fetching on every component mount.
+
+# Pagination - 
+    1. placeholderData - uset to keep previous data until we get next data and avoid data loading time. 
+
+# Clear chash - 
+    1. queryClient.invalidateQueries('queryKey name') - 
+            -use to clear cash of (item) so that react query will fetch new upadted data. use after post or upadte process is done
+
+# Update data without making new get request-
+    1. queryClient.setQueryData(["queryKey name"], (previousData) => ({
+        ...previousData,
+        data: [...previousData.data, newData.data],
+      }));
+
+    2. Optimize version of use of queryClient.invalidateQueries
+
+#
