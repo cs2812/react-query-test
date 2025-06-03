@@ -10,6 +10,12 @@ import "@testing-library/jest-dom";
 jest.mock("axios");
 
 // ✅ Mock IntersectionObserver
+
+/*
+The useInView hook internally uses the IntersectionObserver API, 
+which is a browser feature that observes when an element comes into view (for example, 
+when scrolling near the bottom of the page to trigger fetching the next page).
+*/
 window.IntersectionObserver = class {
   constructor(callback) {
     this.callback = callback;
@@ -39,7 +45,7 @@ const renderWithProviders = (ui) => {
 };
 
 // ✅ Mock Data
-const mockUserPage1 = {
+const mockUsersPage1 = {
   data: {
     page: 1,
     total_pages: 2,
@@ -63,8 +69,11 @@ const mockUserPage1 = {
 };
 
 describe("UnlimitScrolling Component", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
   test("renders user cards after loading", async () => {
-    axios.get.mockResolvedValueOnce(mockUserPage1);
+    axios.get.mockResolvedValueOnce(mockUsersPage1);
 
     renderWithProviders(<UnlimitScrolling />);
 
