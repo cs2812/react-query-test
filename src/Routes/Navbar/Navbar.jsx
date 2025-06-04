@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import "../styles.css"; // optional: for styling
+import "../../styles.css"; // optional: for styling
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -13,7 +13,6 @@ const Navbar = () => {
       to: "/unlimit-scrolling",
       label: "Unlimit Scrolling",
     },
-    { title: "Home", to: "/", label: "Home" },
   ];
   const handleNavigate = (to) => {
     navigate(to);
